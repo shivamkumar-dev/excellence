@@ -13,9 +13,9 @@ router.get('/average', async (req, res) => {
     {
       $group: {
         _id: null,
-        firstRound: { $avg: '$firstRound' },
-        secondRound: { $avg: '$secondRound' },
-        thirdRound: { $avg: '$thirdRound' },
+        firstRoundAverage: { $avg: '$firstRound' },
+        secondRoundAverage: { $avg: '$secondRound' },
+        thirdRoundAverage: { $avg: '$thirdRound' },
       },
     },
   ]);
