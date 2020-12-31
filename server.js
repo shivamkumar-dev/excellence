@@ -1,8 +1,10 @@
 // Modules
+require('express-async-errors');
+require('dotenv').config();
+const error = require('./middlewares/error');
 const avgAndHighest = require('./routes/avgAndHighest');
 const candidates = require('./routes/candidates');
 const testScores = require('./routes/testScores');
-require('dotenv').config();
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 const { connect } = require('mongoose');
@@ -26,6 +28,7 @@ app.use(express.json());
 app.use('/api/candidates', candidates);
 app.use('/api/test-scores', testScores);
 app.use('/api/scores', avgAndHighest);
+app.use(error);
 
 // Server
 const port = process.env.PORT || 3000;
